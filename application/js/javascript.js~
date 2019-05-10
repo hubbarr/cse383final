@@ -6,7 +6,7 @@ var athTok = "";
 function sendLoginCredentials() {
     // Get data
     var formData = {};
-    formData.user = $("input#user").val();
+    formData.username = $("input#username").val();
     formData.password = $("input#password").val();
 
     // Send it via AJAX POST
