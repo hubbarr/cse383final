@@ -2,15 +2,8 @@ body {
     background: rgb(204, 207, 234);
 }
 
-/*#page-content {
-    min-width: 75vw;
-}*/
 
-/*#login-form {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 45vw;
-}*/
+
 
 #error {
     display: none;
@@ -20,9 +13,6 @@ body {
     text-align: center;
 }
 
-/*.section-heading {
-    padding-top: 15px;
-}*/
 
 #auth-content {
     display: none;
@@ -35,10 +25,7 @@ body {
     width: 100%;
 }
 
-#buttons button {
-/*
-    margin: 0 0.5rem;*/
-}
+
 
 
 #update-scrollbox {
