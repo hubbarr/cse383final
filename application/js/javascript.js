@@ -1,32 +1,33 @@
-// Authenticated user's login token, to be passed to API calls
 var athTok = "";
 
+<<<<<<< HEAD
 // Attempt a login using the credentials entered in the login form
 // Upon a successful login, automatically calls the handler for populating buttons
 function Login() {
     // Get data
+=======
+function logn() {
+>>>>>>> 118aca70732e9fc23e49cc2298bff17b5a094c02
     var formData = {};
     formData.user = $("input#user").val();
     formData.password = $("input#password").val();
-
-    // Send it via AJAX POST
     $.ajax({
         url: "rest.php/v1/user",
         type: "POST",
         dataType: "JSON",
         contentType: "application/json",
         data: JSON.stringify(formData),
-        success: function(response) {
-            if (response.status == "OK") {
-                athTok = response.token;
+        success: function(txt) {
+            if (txt.status == "OK") {
+                athTok = txt.token;
                 $("div#error").css("display", "none");
                 $("div#auth-content").css("display", "block");
                 $("form#login-form").css("display", "none");
                 $("#login-banner").css("display", "none");
-                prepareDataPage();  // Prepare the post-login screen (add buttons, first-time table population)
+                prepareDataPage();
             } else {
                 $("div#error").css("display", "block");
-                $("div#error").html("<p>" + response.msg + "</p>");
+                $("div#error").html("<p>" + txt.msg + "</p>");
             }
         },
         error: function(xhr) {
@@ -35,35 +36,29 @@ function Login() {
     });
 }
 
-// Prepares the post-login screen with dynamic button population and table entries
 function prepareDataPage() {
     populateButtons();
     getSummaryOfItems();
     getRecentItems();
 }
 
-// Add a new database entry, get the summary, and update the table
-// Receives itemPK (itemKey) from the onclick handler set by dynamic button creation
-function addItemAndUpdate(itemKey) {
-    addDatabaseEntry(itemKey);
+function addItemAndUpdate(dt) {
+    addDatabaseEntry(dt);
     getSummaryOfItems();
     getRecentItems();
 }
 
-// Add a new consumed item based on authenticated user to the diary database
-function addDatabaseEntry(itemKey) {
+function addDatabaseEntry(dt) {
     var updateData = {};
     updateData.token = athTok;
-    updateData.itemPK = itemKey;
-
-    // Send the new consumed item as an update query to database
+    updateData.itemPK = dt;
     $.ajax({
         url: "rest.php/v1/items",
         type: "POST",
         dataType: "JSON",
         data: JSON.stringify(updateData),
-        success: function(response) {
-            if (response.status == "FAIL") {
+        success: function(txt) {
+            if (txt.status == "FAIL") {
             } else {
             }
         },
@@ -73,15 +68,14 @@ function addDatabaseEntry(itemKey) {
     });
 }
 
-// Request data from DB to dynamically populate the buttons area
 function populateButtons() {
     $.ajax({
         url: "rest.php/v1/items",
         type: "GET",
         dataType: "JSON",
-        success: function(response) {
-            if (response.status == "OK") {
-                $.each(response.items, function(i, item) {
+        success: function(txt) {
+            if (txt.status == "OK") {
+                $.each(txt.items, function(i, item) {
                     $("div#buttons").append("<button class=\"btn btn-default\" onclick=\"addItemAndUpdate(this.id)\" id=\"" + item.pk + "\">" + item.item + "</button>");
                 });
             } else {
@@ -93,20 +87,19 @@ function populateButtons() {
     });
 }
 
-// Request a list of the 30 most recently consumed items for a particular user and display in a table
 function getRecentItems() {
     $.ajax({
         url: "rest.php/v1/items/" + athTok,
         type: "GET",
         dataType: "json",
-        success: function(response) {
-            if (response.status == "OK") {
-                $("#update-log-body").html(prepareUpdateLogTable(response.items));
+        success: function(txt) {
+            if (txt.status == "OK") {
+                $("#update-log-body").html(prepareUpdateLogTable(txt.items));
                 $("div#error").css("display", "none");
                 $("form#login-form").css("display", "none");
             } else {
                 $("div#error").css("display", "block");
-                console.log("Request failed: " + response.msg);
+                console.log("Request failed: " + txt.msg);
             }
         },
         error: function(xhr, status, error) {
@@ -117,11 +110,8 @@ function getRecentItems() {
     });
 }
 
-// Properly format the table data for the update log body
 function prepareUpdateLogTable(data) {
     var tableMarkup = "";
-
-    // Create a row for each item and its timestamp
     $.each(data, function(i, item) {
         tableMarkup += `
         <tr>
@@ -146,23 +136,21 @@ function prepareSummaryOfItemsTable(data){
 	return tableContent;
 }
 
-// Request the updated data from the diary database
 function getSummaryOfItems() {
-    // GET the items
     $.ajax({
         url: "rest.php/v1/itemsSummary/" + athTok,
         type: "GET",
         dataType: "json",
-        success: function(response) {
-            if (response.status == "OK") {
-                $.each(response.itemCount, function(i, item) {
-                    $("#diary-items-body").html(prepareSummaryOfItemsTable(response.itemCount));
+        success: function(txt) {
+            if (txt.status == "OK") {
+                $.each(txt.itemCount, function(i, item) {
+                    $("#diary-items-body").html(prepareSummaryOfItemsTable(txt.itemCount));
                 });
                 $("div#error").css("display", "none");
                 $("form#login-form").css("display", "none");
             } else {
                 $("div#error").css("display", "block");
-                console.log("Request failed: " + response.msg);
+                console.log("Request failed: " + txt.msg);
             }
         },
         error: function(xhr, status, error) {
