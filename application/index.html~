@@ -19,12 +19,12 @@
       <!-- Login form -->
       <form method="POST" id="login-form">
 	<div class="form-group">
-	  <label for="user">Username: </label>
-	  <input type="text" class="form-control" id="user" name="user" placeholder="Enter Username">
+	  <label for="username">Username: </label>
+	  <input type="text" class="form-control" id="username" for="username" name="username" placeholder="Enter Username">
 	</div>
 	<div class="form-group">
 	  <label for="password">Password: </label>
-	  <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+	  <input type="password" class="form-control" id="password" for="password" name="password" placeholder="Enter Password">
 	</div>
 	<button type="button" class="btn btn-default" onclick="sendLoginCredentials()">Log In</button>
       </form>

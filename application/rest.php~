@@ -97,10 +97,10 @@ if($method === "post" && count($pathParts) == 3  && $pathParts[2] === "user") {
 	retJson($ret);
 } else if ($method==="post" && count($pathParts) ==  3 && $pathParts[2] === "items") {
 	$data = json_decode(file_get_contents('php://input'), true);
-	$athTok = $data['token'];
+	$authToken = $data['token'];
 	$userPK;
 	$itemPK = $data['itemPK'];
-	$user = $_SESSION[$athTok];
+	$user = $_SESSION[$authToken];
 	$userPKQuery = mysqli_query($_SESSION['mysqli'], "SELECT pk FROM users WHERE user = \"$user\"");
 	if (!$userPKQuery) {
 		error_log("SQL Error - $mysqli->error");
