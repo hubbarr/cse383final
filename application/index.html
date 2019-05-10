@@ -12,43 +12,59 @@
   <body>
     <div class="container" id="page-content">
       <div class="heading">
-	<h1>Final Project</h1>
+	<br>
+	<h1>Personal Food Diary</h1>
+	<br>
+	<br>
       </div>
       <div id="error" class="alert alert-danger">
       </div>
       <!-- Login form -->
       <form method="POST" id="login-form">
 	<div class="form-group">
-	  <label for="user">Username: </label>
+	  <label for="user">Unique Username: </label>
 	  <input type="text" class="form-control" id="user" name="user" placeholder="Enter Username">
 	</div>
 	<div class="form-group">
 	  <label for="password">Password: </label>
 	  <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
 	</div>
-	<button type="button" class="btn btn-default" onclick="sendLoginCredentials()">Log In</button>
+	<button type="button" class="btn btn-default" onclick="sendLoginCredentials()">Submit</button>
       </form>
       <!-- App -->
       <div id="auth-content">
 	<div id="buttons">
+	<center> Choose a food item below: </center>
+	<br> 
 	  <!-- Updated with buttons after authentication success -->
 	</div>
-	<div id="diary-content">
-	  <h2 class="section-heading">Summary</h2>
+	<br>
+	<br>
+	<br>
+	<div id="diary-content"><center>
+	  <h2 class="section-heading">Tracker</h2>
+	<br>
+	<br>
 	  <table id="diary-items" class="table">
 	    <thead id="diary-items-head">
-	      <th>Item</th>
-	      <th>Number of Items</th>
+	      <th>Food Item</th>
+	      <th>Quantity</th>
 	    </thead>
+	</center>
 	    <tbody id="diary-items-body"></tbody>
 	  </table>
-	  <h2 class="section-heading">Recent</h2>
+	<center>
+	<br>
+	<br>
+	  <h2 class="section-heading">History</h2>
+	<br>
+	<br>
 	  <div id="update-scrollbox">
 	    <table id="update-log" class="table">
 	      <thead id="update-log-head">
 		<th>Item Name</th>
 		<th>Timestamp</th>
-	      </thead>
+	      </thead></center>
 	      <tbody id="update-log-body"></tbody>
 	    </table>
 	  </div>
