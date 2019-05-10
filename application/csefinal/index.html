@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CSE383 Final Project</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/stylesheet.css">
+    </head>
+    <body>
+        <div class="container" id="page-content">
+            <div class="heading">
+                <h1>CSE383 Final Project</h1>
+                <h3 id="login-banner">Login</h3>
+            </div>
+
+            <div id="error" class="alert alert-danger">
+            </div>
+
+            <form method="POST" id="login-form">
+                <div class="form-group">
+                    <label for="username">Username: </label>
+                    <input class="form-control" id="username" type="text" for="username" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input class="form-control" id="password" type="password" for="password" name="password" placeholder="Password">
+                </div>
+                <button type="button" class="btn btn-default" onclick="sendLoginCredentials()">Log In</button>
+            </form>
+
+            <!-- Content available after logging in -->
+            <div id="auth-content">
+                <div id="buttons">
+                    <!-- Updated with buttons after authentication success -->
+                </div>
+    
+                <div id="diary-content">
+                    <h2 class="section-heading">Summary</h2>
+                    <table id="diary-items" class="table">
+                        <thead id="diary-items-head">
+                            <th>Item</th>
+                            <th>Count</th>
+                        </thead>
+                        <tbody id="diary-items-body"></tbody>
+                    </table>
+
+                    <h2 class="section-heading">Recent Items</h2>
+                    <div id="update-scrollbox">
+                        <table id="update-log" class="table">
+                            <thead id="update-log-head">
+                                <th>Item Name</th>
+                                <th>Timestamp</th>
+                            </thead>
+                            <tbody id="update-log-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- end of auth content -->
+        </div>
+
+        <script src="js/javascript.js"></script>
+		<br>
+		<br>
+		<center> <a href="author.html"> Author's page </a> </center>
+    </body>
+</html>

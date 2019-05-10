@@ -1,0 +1,59 @@
+body {
+    background: linear-gradient(to bottom, #ccedff 0%, #ffffff 100%);
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+#page-content {
+    min-width: 75vw;
+}
+
+#login-form {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 45vw;
+}
+
+/* Error div for incorrect login */
+#error {
+    margin: 2.5rem auto 1.5rem auto;
+    max-width: 45vw;
+    display: none;
+}
+
+.heading {
+    text-align: center;
+}
+
+.section-heading {
+    padding-top: 15px;
+}
+
+#auth-content {
+    display: none;
+}
+
+#buttons {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+    text-align: center;
+    width: 70%;
+}
+
+#buttons button {
+    margin: 0 0.5rem;
+}
+
+#diary-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+#update-scrollbox {
+    overflow-y: scroll;
+    max-height: 50vh;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
