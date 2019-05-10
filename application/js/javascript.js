@@ -3,7 +3,7 @@ var athTok = "";
 
 // Attempt a login using the credentials entered in the login form
 // Upon a successful login, automatically calls the handler for populating buttons
-function sendLoginCredentials() {
+function Login() {
     // Get data
     var formData = {};
     formData.user = $("input#user").val();
